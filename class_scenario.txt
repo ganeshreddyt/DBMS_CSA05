@@ -1,0 +1,35 @@
+mysql> create table progress(reg_no int,name varchar(15),subject varchar(15),score int);
+Query OK, 0 rows affected (0.03 sec)
+
+mysql> insert into progress values(192011460,'ganesh','java',99),(192011451,'srinivasulu','DBMS',85),(192011461,'venugopal','ETHICS',87),(192111008,'sanjay','CA',82);
+Query OK, 4 rows affected (0.00 sec)
+Records: 4  Duplicates: 0  Warnings: 0
+
+mysql> select * from progress;
++-----------+-------------+---------+-------+
+| reg_no    | name        | subject | score |
++-----------+-------------+---------+-------+
+| 192011460 | ganesh      | java    |    79 |
+| 192011451 | srinivasulu | DBMS    |    85 |
+| 192011461 | venugopal   | ETHICS  |    87 |
+| 192111008 | sanjay      | CA      |    82 |
++-----------+-------------+---------+-------+
+4 rows in set (0.00 sec)
+
+mysql> select avg(score) from progress;
++------------+
+| avg(score) |
++------------+
+|      83.25 |
++------------+
+1 row in set (0.00 sec)
+
+mysql> select max(score) from progress;
++------------+
+| max(score) |
++------------+
+|         87 | 
++------------+
+1 row in set (0.00 sec)
+
+mysql>

@@ -1,0 +1,60 @@
+mysql> create table carrental(car_no int,car_name varchar(20),date_of_taken date,date_of_return date);
+Query OK, 0 rows affected (0.02 sec)
+mysql> insert into carrental values(4480,'HYUNDAI','2022-09-19','2022-09-21'),(3242,'ford','2022-09-05','2022-09-21'),(4566,'MG','2022-09-13','2022-09-21');
+Query OK, 3 rows affected (0.02 sec)
+Records: 3  Duplicates: 0  Warnings: 0
+
+mysql> select* from carrental;
++--------+----------+---------------+----------------+
+| car_no | car_name | date_of_taken | date_of_return |
++--------+----------+---------------+----------------+
+|   4480 | HYUNDAI  | 2022-09-19    | 2022-09-21     |
+|   3242 | ford     | 2022-09-05    | 2022-09-21     |
+|   4566 | MG       | 2022-09-13    | 2022-09-21     |
++--------+----------+---------------+----------------+
+3 rows in set (0.00 sec)
+
+mysql> select * from carrental
+    -> where date_of_taken > '2022-09-13';
++--------+----------+---------------+----------------+
+| car_no | car_name | date_of_taken | date_of_return |
++--------+----------+---------------+----------------+
+|   4480 | HYUNDAI  | 2022-09-19    | 2022-09-21     |
++--------+----------+---------------+----------------+
+1 row in set (0.00 sec)
+mysql> alter table carrental add rate int;
+Query OK, 3 rows affected (0.04 sec)
+Records: 3  Duplicates: 0  Warnings: 0
+
+mysql> update carrental set rate=5000
+    -> where car_no=3242;
+Query OK, 1 row affected (0.02 sec)
+Rows matched: 1  Changed: 1  Warnings: 0
+
+mysql> update carrental set rate=2000
+    -> where car_no=4480;
+Query OK, 1 row affected (0.02 sec)
+Rows matched: 1  Changed: 1  Warnings: 0
+
+mysql> update carrental set rate=6000
+    -> where car_no=4566;
+Query OK, 1 row affected (0.01 sec)
+Rows matched: 1  Changed: 1  Warnings: 0
+
+mysql> select * from carrental;
++--------+----------+---------------+----------------+------+
+| car_no | car_name | date_of_taken | date_of_return | rate |
++--------+----------+---------------+----------------+------+
+|   4480 | HYUNDAI  | 2022-09-19    | 2022-09-21     | 2000 |
+|   3242 | ford     | 2022-09-05    | 2022-09-21     | 5000 |
+|   4566 | MG       | 2022-09-13    | 2022-09-21     | 6000 |
++--------+----------+---------------+----------------+------+
+3 rows in set (0.00 sec)
+
+mysql> select max(rate) from carrental;
++-----------+
+| max(rate) |
++-----------+
+|      6000 |
++-----------+
+1 row in set (0.02 sec)
